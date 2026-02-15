@@ -52,7 +52,50 @@ function catWish(type){
   `;
 
   document.getElementById("surpriseBtn").addEventListener("click", revealImage);
+
 }
+
+function loveQuestion() {
+
+  const catDisplay = document.getElementById("catDisplay");
+
+  catDisplay.innerHTML = `
+    <h3>Do you love me? 🥺</h3>
+    <div style="margin-top:20px;">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 😼</button>
+    </div>
+    <div id="loveResult" style="margin-top:20px;"></div>
+  `;
+
+  const result = document.getElementById("loveResult");
+
+  document.getElementById("noBtn").addEventListener("click", () => {
+
+    result.innerHTML = `
+      <img src="assets/sad.png" style="width:220px;">
+      <p style="margin-top:10px;font-size:20px;">really?? 😭</p>
+    `;
+  });
+
+  document.getElementById("yesBtn").addEventListener("click", () => {
+
+    result.innerHTML = `
+      <img src="assets/happy.png" style="width:220px;">
+      <p style="margin-top:10px;font-size:20px;">
+        I knew it 😌💞
+      </p>
+      <button id="surpriseBtn" style="margin-top:15px;">
+        See the Surprise 💝
+      </button>
+    `;
+
+    document.getElementById("surpriseBtn")
+      .addEventListener("click", revealImage);
+  });
+
+}
+
 
 function revealImage(){
 
