@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>H_B_D BOSS ❤️</title>
-<link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H_B_D BOSS ❤️</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <h1 id="ageText">21</h1>
-</div>
-
-<!-- CELEBRATION -->
-<section id="celebration" class="hidden">
-  <h2>This is the Time to Level Up 🎂</h2>
-  <img id="cake" src="assets/cake-21.png">
-  <img id="knife" src="assets/knnife.png">
-  <button id="lightBtn">Light the 22 Candle ✨</button>
-  <div id="wishText"></div>
-</section>
-
-<!-- CAT WISH SECTION -->
-<section id="catSection" class="hidden">
-  <h2 id="heading">Choose Your Wish 🐾</h2>
-
-  <div class="btn-group" id="wishButtons">
-    <button onclick="catWish(1)">Cute 🐾</button>
-    <button onclick="catWish(2)">Romantic 💕</button>
-<button onclick="loveQuestion()">Do You Love Me? 💘</button>
-
+  <!-- LOADER -->
+  <div id="loader">
+    <h1 id="ageText">21</h1>
   </div>
 
-  <div id="catDisplay"></div>
-</section>
+  <!-- CELEBRATION -->
+  <section id="celebration" class="hidden">
+    <h2>This is the Time to Level Up 🎂</h2>
+    <img id="cake" src="assets/cake-21.png">
+    <img id="knife" src="assets/knnife.png">
+    <button id="lightBtn">Light the 22 Candle ✨</button>
+    <div id="wishText"></div>
+  </section>
+
+  <!-- CAT WISH SECTION -->
+  <section id="catSection" class="hidden">
+    <h2 id="heading" class="show-heading">Choose Your Wish 🐾</h2>
+
+    <div class="btn-group" id="wishButtons">
+      <button onclick="catWish(1)">Cute 🐾</button>
+      <button onclick="catWish(2)">Romantic 💕</button>
+      <button onclick="loveQuestion()">Do You Love Me? 💘</button>
+
+    </div>
+
+    <div id="catDisplay"></div>
+  </section>
 
 
-<!-- MEMORY SECTION -->
-<section id="memorySection" class="hidden">
-  <h2>Memories ❤️</h2>
+  <!-- MEMORY SECTION -->
+  <section id="memorySection" class="hidden">
+    <h2 style="color: rgb(252, 252, 252);">Memories ❤️</h2>
 
-  <div class="slideshow-box">
-    <img id="slideImage">
-  </div>
-  <div id="finalMessage" class="hidden">
-    <h1>🎉 Happy Birthday My Love ❤️</h1>
-    <p>You make 22 look magical ✨</p>
-  </div>
-  <audio id="revealMusic" src="/assets/song2.mp3"></audio>
-  <audio id="bgMusic" src="assets/song.m4a"></audio>
-</section>
-<script src="scripts.js"></script>
+    <div class="slideshow-box">
+      <img id="slideImage">
+    </div>
+    <div id="finalMessage" class="hidden">
+      <h1>🎉 Happy Birthday My Love ❤️</h1>
+      <p>You make 22 look magical ✨</p>
+    </div>
+    <audio id="revealMusic" src="assets/song2.mp3"></audio>
+    <audio id="bgMusic" src="assets/song.m4a"></audio>
+  </section>
+  <script src="scripts.js"></script>
 </body>
+
 </html>
