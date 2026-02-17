@@ -44,7 +44,7 @@ function playRevealSong() {
 
   revealMusic.currentTime = 0;
   revealMusic.volume = 1;
-    fadeInMusic();
+  fadeInMusic();
   const playPromise = revealMusic.play();
 
   if (playPromise !== undefined) {
@@ -85,7 +85,7 @@ function loveQuestion() {
   const catDisplay = document.getElementById("catDisplay");
 
   catDisplay.innerHTML = `
-    <h3>Do you love me? 🥺</h3>
+    <h3 id="love" style="color: red;">Do you love me? 🥺</h3>
     <div style="margin-top:20px;">
       <button id="yesBtn">Yes 💖</button>
       <button id="noBtn">No 😼</button>
@@ -100,7 +100,10 @@ function loveQuestion() {
       <img src="assets/sad.png" style="width:220px;">
       <p style="margin-top:10px;font-size:20px;">really?? 😭</p>
     `;
+    document.getElementById("wishButtons").style.display = "none";
+    document.getElementById("heading").style.display = "none";
   });
+
 
   document.getElementById("yesBtn").addEventListener("click", () => {
 
@@ -117,11 +120,19 @@ function loveQuestion() {
     document.getElementById("wishButtons").style.display = "none";
     document.getElementById("yesBtn").style.display = "none";
     document.getElementById("noBtn").style.display = "none";
+    document.getElementById("love").style.display = "none";
 
     document.getElementById("surpriseBtn").addEventListener("click", () => {
+
       playRevealSong();
       revealImage();
+
+      const heading = document.getElementById("heading");
+      heading.innerText = "Happy Birthday My Love 💝";
+      heading.style.display = "block";   // ⭐ show it again
+
     });
+
 
   });
 }
@@ -144,15 +155,12 @@ function revealImage() {
     catDisplay.innerHTML = "";
     catDisplay.classList.remove("fade-out");
 
-    document.getElementById("heading").innerText = "Happy Birthday My Love 💝";
-
     const container = document.createElement("div");
     container.className = "her-container";
 
     const leftImg = document.createElement("img");
     leftImg.src = "assets/cuty.png";
     leftImg.className = "sideImage";
-
     const img = document.createElement("img");
     img.src = "assets/her.jpg";
     img.id = "herImage";
@@ -198,7 +206,7 @@ function createHeart() {
 
   document.body.appendChild(heart);
 
-  setTimeout(() => heart.remove(), 10000);
+  setTimeout(() => heart.remove(), 13000);
 }
 
 
