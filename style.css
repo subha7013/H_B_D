@@ -48,8 +48,9 @@ section{
 
 h2{
   font-family:'Great Vibes', cursive;
-  font-size:50px;
+  font-size:40px;
   margin-bottom:20px;
+  color:#572816;
 }
 
 /* CAKE */
@@ -72,22 +73,20 @@ h2{
   animation:float 2s infinite alternate;
 }
 
-@keyframes float{
-  from{transform:translateY(0);}
-  to{transform:translateY(10px);}
-}
+
 
 button{
   padding:12px 25px;
   border:none;
   border-radius:30px;
-  background:white;
-  color:#ff4f8b;
+  color:#17ff00;
+  background: linear-gradient(95deg, black, transparent);
   font-weight:bold;
   margin-top:20px;
   cursor:pointer;
   transition:0.3s;
 }
+
 
 button:hover{
   transform:scale(1.1);
@@ -115,20 +114,8 @@ button:hover{
   transform: translateY(-15px);
 }
 
-#herImage {
-  width: 250px;
-  border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0 0 40px pink;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: 0.8s ease;
-}
 
-#herImage.show {
-  opacity: 1;
-  transform: scale(1);
-}
+
 
 
 @keyframes pop{
@@ -347,20 +334,9 @@ button:hover{
   transform: translateY(-15px);
 }
 
-#herImage {
-  width: 250px;
-  border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0 0 40px pink;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: 0.8s ease;
-}
 
-#herImage.show {
-  opacity: 1;
-  transform: scale(1);
-}
+
+
 
 
 @keyframes pop{
@@ -406,6 +382,7 @@ button:hover{
   box-shadow:0 0 40px rgba(255,105,180,0.4);
   opacity:0;
   transition:1.5s ease;
+  
 }
 
 /* Final message */
@@ -457,11 +434,71 @@ button:hover{
   from{transform:scale(1);}
   to{transform:scale(1.1);}
 }
-
+@keyframes float{
+  from{transform:translateY(0);}
+  to{transform:translateY(20px);}
+}
 /* RESPONSIVE */
 @media(max-width:768px){
   #ageText{font-size:80px;}
   #cake{width:200px;}
+}
+
+/* ===== HERO REVEAL LAYOUT UPDATE ===== */
+
+/* container keeps lady centered */
+.her-container{
+  position:relative;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* 👩 LADY – BIG + CENTER */
+#herImage{
+  width:380px;
+  max-width:90vw;
+  display:block;          /* fixes flex issue */
+  margin:auto;
+  z-index:2;
+}
+
+/* 🎈 KID – LEFTMOST + FLOATING */
+.sideImage{
+  position:absolute;
+  left:-220px;
+  bottom:-100px;
+  width:170px;
+  height:auto;
+  animation:floatKid 2s ease-in-out infinite alternate;
+  z-index:1;
+}
+
+/* floating animation only for kid */
+@keyframes floatKid{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-18px); }
+}
+
+
+/* 📱 MOBILE FIX */
+@media(max-width:768px){
+
+  .sideImage{
+    position:static;
+    width:140px;
+    margin-bottom:15px;
+    animation:floatKid 2s ease-in-out infinite alternate;
+  }
+
+  #herImage{
+    width:85vw;
+  }
+
+}
+.show-heading{
+  animation: fadeIn 1.2s ease forwards;
 }
 
 
