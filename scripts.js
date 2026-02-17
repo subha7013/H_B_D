@@ -3,58 +3,83 @@ const ageText = document.getElementById("ageText");
 let count = 0;
 
 let interval = setInterval(() => {
-    ageText.textContent = count % 2 === 0 ? "21" : "22";
-    count++;
+  ageText.textContent = count % 2 === 0 ? "21" : "22";
+  count++;
 
-    if (count > 6) {
-        clearInterval(interval);
-        ageText.textContent = "22";
-        setTimeout(() => {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("celebration").classList.remove("hidden");
-        }, 1500);
-    }
+  if (count > 6) {
+    clearInterval(interval);
+    ageText.textContent = "22";
+
+    setTimeout(() => {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("celebration").classList.remove("hidden");
+    }, 1500);
+  }
 }, 600);
+
 
 /* CAKE */
 const cake = document.getElementById("cake");
 const lightBtn = document.getElementById("lightBtn");
 
 lightBtn.addEventListener("click", () => {
-    cake.src = "assets/cake-22.png";
-    cake.classList.add("glow");
+  cake.src = "assets/cake-22.png";
+  cake.classList.add("glow");
 
-    setTimeout(() => {
-        cake.classList.add("cut");
-    }, 1000);
+  setTimeout(() => cake.classList.add("cut"), 1000);
 
-    setTimeout(() => {
-        cake.style.display = "none";
-        document.getElementById("celebration").classList.add("hidden");
-        document.getElementById("catSection").classList.remove("hidden");
-    }, 2500);
+  setTimeout(() => {
+    cake.style.display = "none";
+    document.getElementById("celebration").classList.add("hidden");
+    document.getElementById("catSection").classList.remove("hidden");
+  }, 2500);
 });
 
+
+/* AUDIO */
+const revealMusic = document.getElementById("revealMusic");
+const music = document.getElementById("bgMusic");
+
+function playRevealSong() {
+
+  revealMusic.currentTime = 0;
+  revealMusic.volume = 1;
+    fadeInMusic();
+  const playPromise = revealMusic.play();
+
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+
+      setTimeout(() => {
+        revealMusic.pause();
+        revealMusic.currentTime = 0;
+      }, 12000);
+
+    }).catch(err => console.log("Audio play blocked:", err));
+  }
+}
+
+
 /* CAT WISH */
-function catWish(type){
+function catWish(type) {
   const catDisplay = document.getElementById("catDisplay");
 
   let msg = "";
 
-  if(type===1) msg="You're the cutest 22-year-old in this universe 💖";
-  if(type===2) msg="He loves you more than infinity times infinity ❤️";
-  if(type===3) msg="You're 22 but still baby-coded 😼✨";
+  if (type === 1) msg = "You're the cutest 22-year-old in this universe 💖";
+  if (type === 2) msg = "He loves you more than infinity times infinity ❤️";
+  if (type === 3) msg = "You're 22 but still baby-coded 😼✨";
 
-  catDisplay.innerHTML=`
+  catDisplay.innerHTML = `
     <img src="assets/cat1.gif">
-    <p>${msg}</p>
-    <button id="surpriseBtn">See the Surprise 💝</button>
+    <p id="ms">${msg}</p>
   `;
 
-  document.getElementById("surpriseBtn").addEventListener("click", revealImage);
-
+  document.getElementById("ms").style.color = "red";
 }
 
+
+/* LOVE QUESTION */
 function loveQuestion() {
 
   const catDisplay = document.getElementById("catDisplay");
@@ -71,7 +96,6 @@ function loveQuestion() {
   const result = document.getElementById("loveResult");
 
   document.getElementById("noBtn").addEventListener("click", () => {
-
     result.innerHTML = `
       <img src="assets/sad.png" style="width:220px;">
       <p style="margin-top:10px;font-size:20px;">really?? 😭</p>
@@ -83,56 +107,67 @@ function loveQuestion() {
     result.innerHTML = `
       <img src="assets/happy.png" style="width:220px;">
       <p style="margin-top:10px;font-size:20px;">
-        I knew it 😌💞
+        I knew it babee😌💞 
       </p>
       <button id="surpriseBtn" style="margin-top:15px;">
         See the Surprise 💝
       </button>
     `;
 
-    document.getElementById("surpriseBtn")
-      .addEventListener("click", revealImage);
-  });
+    document.getElementById("wishButtons").style.display = "none";
+    document.getElementById("yesBtn").style.display = "none";
+    document.getElementById("noBtn").style.display = "none";
 
+    document.getElementById("surpriseBtn").addEventListener("click", () => {
+      playRevealSong();
+      revealImage();
+    });
+
+  });
 }
 
 
-function revealImage(){
+/* REVEAL IMAGE */
+function revealImage() {
 
   const catDisplay = document.getElementById("catDisplay");
   const wishButtons = document.getElementById("wishButtons");
 
-  if(document.getElementById("herImage")) return;
+  if (document.getElementById("herImage")) return;
 
-  // 🔥 Fade out buttons + cat content
   wishButtons.classList.add("fade-out");
   catDisplay.classList.add("fade-out");
 
-  setTimeout(()=>{
+  setTimeout(() => {
 
-    // Remove buttons completely
     wishButtons.style.display = "none";
-
-    // Clear cat content
     catDisplay.innerHTML = "";
     catDisplay.classList.remove("fade-out");
 
-    // Create her image
+    document.getElementById("heading").innerText = "Happy Birthday My Love 💝";
+
+    const container = document.createElement("div");
+    container.className = "her-container";
+
+    const leftImg = document.createElement("img");
+    leftImg.src = "assets/cuty.png";
+    leftImg.className = "sideImage";
+
     const img = document.createElement("img");
     img.src = "assets/her.jpg";
     img.id = "herImage";
 
-    catDisplay.appendChild(img);
+    container.appendChild(leftImg);
+    container.appendChild(img);
+    catDisplay.appendChild(container);
 
-    // Animate image in
-    setTimeout(()=>{
+    setTimeout(() => {
       img.classList.add("show");
-    },100);
+      leftImg.classList.add("show");
+    }, 100);
 
-    // ❤️ Start hearts
     startHearts();
 
-    // Create Start Memories button
     const btn = document.createElement("button");
     btn.textContent = "Start The Memories 🎞🎞";
     btn.style.marginTop = "20px";
@@ -140,24 +175,19 @@ function revealImage(){
 
     catDisplay.appendChild(btn);
 
-  }, 600); // wait for fade-out
+  }, 600);
 }
 
 
-
+/* HEARTS */
 let heartInterval;
 
-function startHearts(){
-
+function startHearts() {
   heartInterval = setInterval(createHeart, 200);
-
-  // Stop after 6 seconds
-  setTimeout(()=>{
-    clearInterval(heartInterval);
-  }, 8000);
+  setTimeout(() => clearInterval(heartInterval), 8000);
 }
 
-function createHeart(){
+function createHeart() {
 
   const heart = document.createElement("div");
   heart.classList.add("falling-heart");
@@ -168,20 +198,19 @@ function createHeart(){
 
   document.body.appendChild(heart);
 
-  setTimeout(()=>{
-    heart.remove();
-  }, 8000);
+  setTimeout(() => heart.remove(), 10000);
 }
 
 
-
-
+/* SLIDESHOW */
 const totalImages = 32;
 let currentIndex = 1;
 let slideInterval;
-const music = document.getElementById("bgMusic");
 
-function goToSlideshow(){
+function goToSlideshow() {
+
+  revealMusic.pause();   // stop song2 if still playing
+
   document.getElementById("catSection").classList.add("hidden");
   document.getElementById("memorySection").classList.remove("hidden");
 
@@ -192,12 +221,13 @@ function goToSlideshow(){
   startAutoSlideshow();
 }
 
-function startAutoSlideshow(){
+function startAutoSlideshow() {
+
   showImage();
 
   slideInterval = setInterval(() => {
 
-    if(currentIndex < totalImages){
+    if (currentIndex < totalImages) {
       currentIndex++;
       showImage();
     } else {
@@ -205,10 +235,11 @@ function startAutoSlideshow(){
       endShowcase();
     }
 
-  }, 1600); // change every 1.5 seconds
+  }, 1600);
 }
 
-function showImage(){
+function showImage() {
+
   const img = document.getElementById("slideImage");
 
   img.style.opacity = 0;
@@ -217,9 +248,8 @@ function showImage(){
 
     img.src = `assets/memories/${currentIndex}.jpg`;
 
-    // If .jpg fails, try .jpeg
-    img.onerror = function(){
-      img.onerror = null; // prevent infinite loop
+    img.onerror = function () {
+      img.onerror = null;
       img.src = `assets/memories/${currentIndex}.jpeg`;
     };
 
@@ -228,22 +258,23 @@ function showImage(){
   }, 500);
 }
 
-function endShowcase(){
+function endShowcase() {
 
   document.querySelector(".slideshow-box").style.display = "none";
-
   fadeOutMusic();
 
-  setTimeout(()=>{
+  setTimeout(() => {
     document.getElementById("finalMessage").classList.remove("hidden");
   }, 1000);
 }
 
-/* Music fade in */
-function fadeInMusic(){
+
+/* MUSIC FADE */
+function fadeInMusic() {
   let vol = 0;
-  let fade = setInterval(()=>{
-    if(vol < 1){
+
+  let fade = setInterval(() => {
+    if (vol < 1) {
       vol += 0.05;
       music.volume = vol;
     } else {
@@ -252,10 +283,9 @@ function fadeInMusic(){
   }, 200);
 }
 
-/* Music fade out */
-function fadeOutMusic(){
-  let fade = setInterval(()=>{
-    if(music.volume > 0){
+function fadeOutMusic() {
+  let fade = setInterval(() => {
+    if (music.volume > 0) {
       music.volume -= 0.05;
     } else {
       clearInterval(fade);
