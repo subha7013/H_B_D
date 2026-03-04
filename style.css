@@ -226,7 +226,7 @@ button:hover{
 }
 
 body{
-  background: linear-gradient(135deg,#9ee2ff,#76e7f6);
+  background: linear-gradient(187deg, #232627, #a7008c);
   overflow:hidden;
   text-align:center;
   color:white;
@@ -501,6 +501,7 @@ button:hover{
 .show-heading{
   animation: fadeIn 1.2s ease forwards;
 }
+
 
 
 
