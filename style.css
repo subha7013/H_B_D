@@ -6,7 +6,7 @@
 }
 
 body{
-background: linear-gradient(135deg, #171d20, #840660);
+  background: linear-gradient(135deg,#343535,#4d0541);
   overflow:hidden;
   text-align:center;
   color:white;
@@ -501,6 +501,7 @@ button:hover{
 .show-heading{
   animation: fadeIn 1.2s ease forwards;
 }
+
 
 
 
