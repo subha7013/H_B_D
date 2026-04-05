@@ -4,11 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H_B_D BOSS ❤️</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Happy Birthday Boss 🎉</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,42 +18,45 @@
 
   <!-- CELEBRATION -->
   <section id="celebration" class="hidden">
-    <h2>This is the Time to Level Up 🎂</h2>
+    <h2>Level Up Time 🎂🔥</h2>
     <img id="cake" src="assets/cake-21.png">
     <img id="knife" src="assets/knnife.png">
-    <button id="lightBtn">Light the 22 Candle ✨</button>
-    <div id="wishText"></div>
+    <button id="lightBtn">Light up the Candles ✨</button>
   </section>
 
-  <!-- CAT WISH SECTION -->
+  <!-- CAT SECTION -->
   <section id="catSection" class="hidden">
-    <h2 id="heading" class="show-heading">Choose Your Wish 🐾</h2>
+    <h2 id="heading">Choose Your Vibe 😎</h2>
 
-    <div class="btn-group" id="wishButtons">
+    <div id="wishButtons">
       <button onclick="catWish(1)">Cute 🐾</button>
-      <button onclick="catWish(2)">Romantic 💕</button>
-      <button onclick="loveQuestion()">Do You Love Me? 💘</button>
-
+      <button onclick="catWish(2)">Special 💫</button>
+      <button onclick="bestFriendQuestion()">Click to get Surprise 💯😎</button>
     </div>
 
     <div id="catDisplay"></div>
   </section>
 
-
-  <!-- MEMORY SECTION -->
+  <!-- MEMORY -->
   <section id="memorySection" class="hidden">
-    <h2 style="color: rgb(252, 252, 252);">Memories ❤️</h2>
+    <h2>Memories 📸</h2>
 
     <div class="slideshow-box">
       <img id="slideImage">
     </div>
+
     <div id="finalMessage" class="hidden">
-      <h1>🎉 Happy Birthday My Love ❤️</h1>
-      <p>You make 22 look magical ✨</p>
+      <h1>🎉 Happy Birthday Boss 💖</h1>
+      <p>You make 22 look legendary ✨</p>
+      <p>Stay crazy, stay amazing , Be Healthy 💪— this year is yours 🔥</p>
+      <button class="btn-neon" onclick="location.reload()">Replay The Magic</button>
     </div>
+
+
     <audio id="revealMusic" src="assets/song2.mp3"></audio>
     <audio id="bgMusic" src="assets/song.m4a"></audio>
   </section>
+
   <script src="scripts.js"></script>
 </body>
 
