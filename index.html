@@ -10,12 +10,24 @@
 </head>
 
 <body>
-
+  <div class="fairy-lights-container" id="fairy-lights-container">
+    <svg class="wire-svg" preserveAspectRatio="none" viewBox="0 0 1000 150">
+      <path id="wire-path" d="M0,20 Q100,60 200,20 T400,20 T600,20 T800,20 T1000,20" />
+    </svg>
+  </div>
   <!-- LOADER -->
   <div id="loader">
     <h1 id="ageText">21</h1>
   </div>
 
+  <section id="celebration-page" class="page">
+
+    <div class="glass-container" style="background: transparent; border: none; box-shadow: none;">
+      <h2 id="celeb-hint" style="font-size: 1.5rem; margin-bottom: 30px; letter-spacing: 2px;">The Stage is Set...
+      </h2>
+      <button id="celeb-master-btn" class="btn-neon" onclick="celebFlow()">💡 Turn On Lights</button>
+    </div>
+  </section>
   <!-- CELEBRATION -->
   <section id="celebration" class="hidden">
     <h2>Level Up Time 🎂🔥</h2>
@@ -39,7 +51,7 @@
 
   <!-- MEMORY -->
   <section id="memorySection" class="hidden">
-    <h2>Memories 📸</h2>
+    <h2 id="mem">Memories 📸</h2>
 
     <div class="slideshow-box">
       <img id="slideImage">
