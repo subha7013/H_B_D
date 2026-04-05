@@ -1,8 +1,8 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 * {
@@ -281,23 +281,26 @@ button:hover {
 }
 
 /* 📱 MOBILE FIX */
-@media(max-width:768px){
+@media(max-width:768px) {
 
-  .sideImage{
-    position:static;
-    width:140px;
-    margin-bottom:15px;
-    animation:floatKid 2s ease-in-out infinite alternate;
+  .sideImage {
+    position: static;
+    width: 140px;
+    margin-bottom: 15px;
+    animation: floatKid 2s ease-in-out infinite alternate;
   }
-  .btn-neon{
+
+  .btn-neon {
     padding: 10px 12px;
   }
-  #herImage{
-    width:85vw;
+
+  #herImage {
+    width: 85vw;
   }
 
 }
-.show-heading{
+
+.show-heading {
   animation: fadeIn 1.2s ease forwards;
 }
 
@@ -306,3 +309,275 @@ button:hover {
 
 
 
+
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(1.1) translateZ(0);
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.page.active {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1) translateZ(0);
+  z-index: 10;
+}
+
+/* --- Animations --- */
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-110vh) scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes neonPulse {
+  0% {
+    box-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+  }
+
+  100% {
+    box-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* --- Hero Page --- */
+#hero-page {
+  background: radial-gradient(circle at center, #1a0a0c 0%, #050505 100%);
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: 900;
+  font-style: italic;
+  background: linear-gradient(to right, #fff, #ff2d55, #fff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 3rem;
+}
+
+/* --- Celebration Page --- */
+#celebration-page {
+  background: #000;
+  transition: background 2s ease;
+}
+
+#celebration-page.bright {
+  background: radial-gradient(circle at center, #2a0a0e 0%, #0a0a0b 100%);
+}
+
+/* --- FAIRY LIGHTS --- */
+/* .fairy-lights-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 150px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s ease;
+  z-index: 5;
+} */
+
+/* .fairy-lights-container {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  pointer-events: none;
+  opacity: 0;
+  transition: 1s;
+  z-index: 999; 
+} */
+#fairy-lights-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.wire-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #222;
+  stroke-width: 2;
+}
+
+.bulb-teardrop {
+  position: absolute;
+  width: 14px;
+  height: 22px;
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  background: #333;
+  transform: translate(-50%, 0);
+  transition: 0.5s;
+}
+
+/* 🔥 LIGHT ON EFFECT */
+.lights-on .bulb-teardrop  {
+  background: radial-gradient(circle at 30% 30%, #fff, #ffd54f 60%, #ff9800);
+  box-shadow:
+    0 0 8px #ffd54f,
+    0 0 18px #ffd54f,
+    0 0 30px rgba(255, 200, 0, 0.6);
+}
+.lights-on .bulb-teardrop {
+  background: radial-gradient(circle at 30% 30%, #fff, #ffd54f 60%, #ff9800);
+  box-shadow:
+    0 0 8px #ffd54f,
+    0 0 18px #ffd54f,
+    0 0 30px rgba(255, 200, 0, 0.6);
+  animation: flicker 1.5s infinite alternate;
+}
+
+.lights-on .bulb-teardrop {
+  animation: flicker 1.5s infinite alternate, glowPulse 3s infinite;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 10px #ffd54f; }
+  50% { box-shadow: 0 0 25px #ff9800; }
+  100% { box-shadow: 0 0 10px #ffd54f; }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* --- REALISTIC BALLOONS --- */
+.balloon {
+  position: absolute;
+  bottom: -200px;
+  width: 60px;
+  height: 80px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  z-index: 100;
+  animation: balloonFloat 8s ease-in forwards;
+  display: flex;
+  justify-content: center;
+}
+
+.balloon::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  width: 10px;
+  height: 6px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  width: 1px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.3);
+  transform-origin: top;
+  animation: stringWobble 2s infinite ease-in-out;
+}
+
+.balloon-shine {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 15px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  filter: blur(2px);
+  transform: rotate(30deg);
+}
+
+@keyframes balloonFloat {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(-130vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes stringWobble {
+
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+}
